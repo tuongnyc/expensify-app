@@ -1,5 +1,6 @@
 node_modules
 tests/__snapshots__
+public/dist/
 public/bundle.js
 public/bundle.js.map
 public/styles.css
