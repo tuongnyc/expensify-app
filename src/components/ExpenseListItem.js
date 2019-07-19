@@ -3,6 +3,8 @@ import React from 'react';
 //import { removeExpense, editExpense } from '../actions/expenses';
 //import EditExpensePage from './EditExpensePage';
 import { Link } from 'react-router-dom';
+import moment from 'moment';
+import numeral from 'numeral';
 
 // export a stateless functional component
 // render the description, amount, createdAt
@@ -25,7 +27,7 @@ export const ExpenseListItem = (props) => {
     <div>
     <Link to={`/edit/${id}`}>
     <h3>{props.expense.description}</h3> </Link>
-    <p>{props.expense.amount} - {props.expense.createdAt}</p>
+    <p>{numeral(props.expense.amount/100).format('$0,0.00')} - {moment(props.expense.createdAt).format('MMMM Do, YYYY')}</p>
     </div>
     );
 }
