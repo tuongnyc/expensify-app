@@ -1,0 +1,26 @@
+/* partial starts with _ as filename */
+
+// rem - 1rem = 16px
+
+html {
+    font-size: 62.5%;  // 62.5 of current size!  This will allow us to work
+    // with REM in base 10!!  16 * .625 = 10!
+}
+
+body {
+    //background: $dark-blue;
+    font-family:Helvetica, Arial, Helvetica, sans-serif;
+    font-size: $m-size;  // 16px!
+}
+
+button {
+    cursor: pointer;
+}
+
+button:disabled {
+    cursor: default;
+}
+
+.is-active {
+    font-weight: bold;
+}
