@@ -7,15 +7,7 @@ import moment from 'moment';
 
 // make a connection to the database!  The settings are from the firebase website!
 
-console.log('++++++++++++++++++++++++++++++++++++env API KEY: ', process.env.FIREBASE_API_KEY);
 var firebaseConfig = {
- /*   apiKey: "AIzaSyA9tAMVQlaXrvINBo0CsSBEVEJeEXU6_Uc",
-    authDomain: "expensify-c03b5.firebaseapp.com",
-    databaseURL: "https://expensify-c03b5.firebaseio.com",
-    projectId: "expensify-c03b5",
-    storageBucket: "expensify-c03b5.appspot.com",
-    messagingSenderId: "590271464351",
-    appId: "1:590271464351:web:136df91c9c72016a" */
     apiKey: process.env.FIREBASE_API_KEY,
     authDomain: process.env.FIREBASE_AUTH_DOMAIN,
     databaseURL: process.env.FIREBASE_DATABASE_URL,
@@ -28,8 +20,9 @@ var firebaseConfig = {
   firebase.initializeApp(firebaseConfig);
 
   const database = firebase.database();
+  const googleAuthProvider = new firebase.auth.GoogleAuthProvider();  // user provider!
 
-  export { firebase, database as default };
+  export { firebase, googleAuthProvider, database as default };
 /*
   // firebase does not support array!
   const firebaseNotes = {
