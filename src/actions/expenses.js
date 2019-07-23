@@ -58,18 +58,45 @@ export const removeExpense = (id) => ({
     type: 'REMOVE_EXPENSE',
     id: id
 })
-// EDIT-EXPENSE
 
+// create startRemoveExpense 
+// Test StartRemoveExpense with "should remove expenses from firebase"
+// Use StartRemoveExpense in EditExpensePage Instead of removeExpense
+// Adjust EditExpensePage tests
+export const startRemoveExpense = (id) => {
+    // already got the id at this point.
+    return (dispatch) => {
+        return database.ref('expenses/' + id).remove()
+        .then(() => {
+            console.log('Data is removed.');
+            dispatch(removeExpense(id));
+        }).catch(error => {
+            console.log('Error: ', error);
+        });
+    }
+}
+
+
+// EDIT-EXPENSE
 export const editExpense = (id, updates) => ({
     type: 'EDIT_EXPENSE',
     id,
     updates
 });
 
+export const startEditExpense = (id, updates) => {
+    return (dispatch) => {
+        return database.ref(`expenses/${id}`).update(updates)
+        .then(() => {
+            dispatch(editExpense(id, updates));
+        }).catch(error => {
+            console.log('Error: ', error);
+        })
+    }
+}
+
 // SET_EXPENSES  -- set the array value
 export const setExpenses = (expenses) => {
-    console.log('calling setExpenses....');
-    console.log('expenses from setExpenses: ', expenses);
     return { 
         type: 'SET_EXPENSES',
         expenses
