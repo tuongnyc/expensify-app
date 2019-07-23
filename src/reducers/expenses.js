@@ -16,6 +16,8 @@ const expenseReducer = (state = expensesReducerDefaultState, action) => {
 
             // can use destructuring
             // return state.filter(({id}) => id !== action.id);
+        case 'SET_EXPENSES':
+            return action.expenses; // return the state with all the expenses in the action!
         case 'EDIT_EXPENSE':
             return state.map(p => {
                 if(p.id === action.id) {

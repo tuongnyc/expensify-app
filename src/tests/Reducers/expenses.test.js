@@ -1,5 +1,6 @@
 import expenseReducer from '../../reducers/expenses';
 import moment from 'moment';
+import expensesArray from '../fixtures/expenses';
 
 test('should set default state', () => {
     const state = expenseReducer(undefined, { type: '@@INIT'});
@@ -93,4 +94,13 @@ test('this should not edit an expense object', () => {
     const expenses = expenseReducer(state, action);
     //console.log(expenses);
     expect(expenses).toEqual(state);
-})
+});
+
+test('should set expenses', () => {
+    const action = {
+      type: 'SET_EXPENSES',
+      expenses: [expensesArray[1]]
+    };
+    const state = expenseReducer(expensesArray, action);
+    expect(state).toEqual([expensesArray[1]]);
+  });

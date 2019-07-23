@@ -64,4 +64,38 @@ export const editExpense = (id, updates) => ({
     type: 'EDIT_EXPENSE',
     id,
     updates
-})
+});
+
+// SET_EXPENSES  -- set the array value
+export const setExpenses = (expenses) => {
+    console.log('calling setExpenses....');
+    console.log('expenses from setExpenses: ', expenses);
+    return { 
+        type: 'SET_EXPENSES',
+        expenses
+    }
+    
+}
+
+// asynchonous action
+// fetch all the data once!
+// parse data using the snapshot and push to array
+// dispatch SET_EXPENSES
+export const startSetExpenses = () => {
+    return (dispatch) => {
+        // fetch all the data from database!
+        console.log('Calling startSetExpenses');
+        return database.ref('expenses').once('value')
+        .then((snapshot) => {
+            const expenses = [];
+            snapshot.forEach((childsnapshot) => {
+                expenses.push({id: childsnapshot.key,
+                        ...childsnapshot.val() })
+            });
+            // return expenses so that we can chain the Promises
+            dispatch(setExpenses(expenses));
+        }).catch(error => {
+            console.log('Error: ', error)
+        });
+    }
+};  
