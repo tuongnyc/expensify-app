@@ -60,7 +60,7 @@ export default class ExpenseForm extends React.Component {
         if(!this.state.description || !this.state.amount) {
             // set error state equal to 'Please provide description and amount!'
             this.setState(() => {  // updater function!
-                return {error: 'Please provide description and moment'};
+                return {error: 'Please provide description and amount'};
             })
         }
         else {
@@ -78,17 +78,16 @@ export default class ExpenseForm extends React.Component {
 
     render() {
         return (
-            <div>
-                {this.state.error && <p>{this.state.error}</p>}
-                <form onSubmit={this.onSubmit}>
-                <input 
+            <form className="form" onSubmit={this.onSubmit}>
+                {this.state.error && <p className="form__error">{this.state.error}</p>}
+                <input className="text-input"
                 type="text"
                 placeholder="Description"
                 autoFocus 
                 value={this.state.description}
                 onChange={this.onDescriptionChange}
                 />
-                <input
+                <input className="text-input"
                 type="text"
                 placeholder="Amount"
                 value={this.state.amount}
@@ -102,15 +101,16 @@ export default class ExpenseForm extends React.Component {
                 numberOfMonths={1}
                 isOutsideRange={() => false}
               />
-                <textarea
+                <textarea className="textarea"
                 placeholder="Add a note for your expense(optional)"
                 value={this.state.note}
                 onChange={this.onNoteChange}
                 >
                 </textarea>
-                <button>Add Expense</button>
-                </form>
-            </div>
+                <div>
+                    <button className="button">Save Expense</button>
+                </div>
+            </form>
         )
     }
 } 

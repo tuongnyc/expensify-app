@@ -1,4 +1,7 @@
 /* partial starts with _ as filename */
+* {
+    box-sizing: border-box; //content-box;
+}
 
 // rem - 1rem = 16px
 
@@ -9,8 +12,10 @@ html {
 
 body {
     //background: $dark-blue;
+    color: $dark-grey;
     font-family:Helvetica, Arial, Helvetica, sans-serif;
     font-size: $m-size;  // 16px!
+    line-height: 1.6;
 }
 
 button {

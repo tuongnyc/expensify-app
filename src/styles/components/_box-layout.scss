@@ -1,0 +1,22 @@
+.box-layout {
+    align-items: center;
+    background: url('/images/bg.jpg');
+    background-size: cover;  //cover the container the whole image!
+    display: flex;
+    justify-content: center;
+    height: 100vh;  //set the percentage view height
+    width: 100vw;
+}
+
+.box-layout__box {
+    background: fade-out(white, .15);
+    border-radius: 3px;
+    text-align: center;
+    width: 25rem;  
+    padding: 1.6rem 3.2rem;
+}
+
+.box-layout__title {
+    margin: 0 0 3.2rem 0;
+    line-height: 1;
+}
